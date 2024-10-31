@@ -82,7 +82,7 @@ return baseclass.extend({
 		var fields = [
 			_('Hostname'),         boardinfo.hostname,
 			_('Model'),            boardinfo.model + cpubench.cpubench,
-			_('Architecture'),     cpuinfo.cpuinfo,
+			_('Architecture'),     cpuinfo.cpuinfo || boardinfo.system,
 			_('Target Platform'),  (L.isObject(boardinfo.release) ? boardinfo.release.target : ''),
 			_('Firmware Version'), (L.isObject(boardinfo.release) ? boardinfo.release.description + ' / ' : '') + (luciversion || ''),
 			_('Kernel Version'),   boardinfo.kernel,
@@ -93,7 +93,7 @@ return baseclass.extend({
 				systeminfo.load[1] / 65535.0,
 				systeminfo.load[2] / 65535.0
 			) : null,
-			_('CPU usage'),    cpuusage.cpuusage
+			_('CPU usage (%)'),    cpuusage.cpuusage
 		];
 
 		if (tempinfo.tempinfo) {

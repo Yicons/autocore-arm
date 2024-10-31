@@ -48,9 +48,7 @@ export function conntrack_list(callback) {
 	let connt;
 
 	if (nfct) {
-		let lineCount = 0;
-		for (let line = nfct.read('line'); length(line) && lineCount < 1200; line = nfct.read('line')) {
-			lineCount++;
+		for (let line = nfct.read('line'); length(line); line = nfct.read('line')) {
 			let m = match(line, /^(ipv[46]) +([0-9]+) +\S+ +([0-9]+)( +.+)\n$/);
 
 			if (!m)
